@@ -52,41 +52,26 @@ for i in range(len(info)):
                 valid = True
             else:
                 valid = False
-                
-        
         if key == "hgt":
-            if (info[i][key][-2:] == "cm" or info[i][key][-2:] == "in") and info[i][key][:-2].isnumeric():
-                if info[i][key][-2:] == 'cm' and int(info[i][key][:-2]) >= 150 and int(info[i][key][:-2]) <= 193:
-                    valid = True
-               
-            
-                elif info[i][key][-2:] == 'in' and int(info[i][key][:-2]) >= 59 and int(info[i][key][:-2]) <= 76:
-                    valid = True
-               
-                else:
-                    valid = False
+            if info[i][key][-2:] == 'cm' and int(info[i][key][:-2]) >= 150 and int(info[i][key][:-2]) <= 193:
+                valid = True
+            elif info[i][key][-2:] == 'in' and int(info[i][key][:-2]) >= 59 and int(info[i][key][:-2]) <= 76:
+                valid = True
             else:
                 valid = False
-                
         if key == "hcl":
-            if len(info[i][key]) == 7 and all(c in info[i][key][1:] for c in string.hexdigits) and info[i][key][0] == '#' :
+            if len(info[i][key]) == 7 and any(c in info[i][key][1:] for c in hex) and info[i][key][0] == '#' :
                 valid = True
-                
-                
             else:
                 valid = False
         if key == "ecl":
-            if info[i][key] in ("amb","blu","brn","gry","grn","hzl","oth"):
+            if info[i][key] == 'amb' or info[i][key] == 'blu' or info[i][key] == 'brn' or info[i][key] == 'gry' or info[i][key] == 'grn' or info[i][key] == 'hzl' or info[i][key] == 'oth':
                 valid = True
-                
             else:
                 valid = False
-               
         if key == "pid":
-            if len(info[i][key]) == 9 and info[i][key].isnumeric():
+            if len(info[i][key]) == 9:
                 valid = True
-                
-                
             else:
                 valid = False
                 
